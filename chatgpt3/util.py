@@ -23,7 +23,7 @@ class ChatGPT3:
             }
 
     
-    def ngobrol(self, text):
+    def chat(self, text):
         data = { 
             "model": self.model,
             "prompt": text,
@@ -35,7 +35,7 @@ class ChatGPT3:
         output = response.json()['choices'][0]['text']
         print(output)
 
-    def ngoding(self, text):
+    def code(self, text):
         if self.context is not None:
             text = f"dari kode : \n {self.context} \n " + text
         data = { 
@@ -50,7 +50,7 @@ class ChatGPT3:
         self.context = output
         exec(output, globals())
 
-    def tampilkan_kode_terakhir(self):
+    def last_code(self):
         print(self.context)
 
     def reset_context(self):
